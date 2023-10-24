@@ -1,8 +1,7 @@
-#include <iostream>
-
-using namespace std;
+#include "./inc/state_manager.h"
 
 int main() {
-    cout << "Hello World";
+    CStateManager csm;
+    csm.run();
     return 0;
 }
