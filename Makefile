@@ -1,4 +1,4 @@
-OBJS = main.o state_manager.o state.o menu.o
+OBJS = main.o state_manager.o state.o menu.o about.o
 CC = g++
 
 #---------------Executable---------------#
@@ -18,6 +18,9 @@ state.o:
 
 menu.o:
 	$(CC) -c ./src/menu.cpp		# -> menu.o
+
+about.o:
+	$(CC) -c ./src/about.cpp	# -> about.o
 
 #---------------Commands---------------#
 clean:	

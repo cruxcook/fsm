@@ -8,6 +8,7 @@
 using namespace std;
 
 #include "./menu.h"
+#include "./about.h"
 
 class CStateManager {    // Class
     private:
@@ -15,6 +16,7 @@ class CStateManager {    // Class
         int state;
 
         CMenu menu;
+        CAbout about;
 
     public:
         CStateManager();
