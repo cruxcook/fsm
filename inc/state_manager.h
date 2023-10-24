@@ -7,10 +7,14 @@
 
 using namespace std;
 
+#include "./menu.h"
+
 class CStateManager {    // Class
     private:
         bool isRunning;
         int state;
+
+        CMenu menu;
 
     public:
         CStateManager();
@@ -21,10 +25,9 @@ class CStateManager {    // Class
         void setState(int stateID);
         int getState();
 
-        void run();
-        void update();
-        void load(int stateID);
-        void exit();
+        void runState();
+        void updateState();
+        void exitState();
 };
 
 #endif  // STATE_MANAGER_H

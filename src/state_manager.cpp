@@ -2,7 +2,7 @@
 
 CStateManager::CStateManager() {
     this->setIsRunning(true);
-    this->setState(0);  // 0: Main menu; 1: Actions; 2: About; 3: Exit
+    this->setState(1);  // 1: Main menu; 2: Actions; 3: About; 0: Exit
 }
 
 void CStateManager::setIsRunning(bool b) {
@@ -20,20 +20,50 @@ int CStateManager::getState() {
 }
 
 
-void CStateManager::run() {
+void CStateManager::runState() {
     cout << "...Running...";
+
+    while (this->getIsRunning())
+    {
+        this->updateState();
+        // usleep(1000);
+        system("clear");
+    }
 }
 
-void CStateManager::update() {
-    cout << "...Updating...";
+void CStateManager::updateState() {
+    cout << "...Updating...\n";
+
+    switch (this->getState()) {
+    case 1:
+        if (!menu.getIsFinished())
+            menu.update();
+        else {
+            this->setState(menu.getNextState());
+            menu.setIsFinished(false);
+        }
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 0:
+        this->exitState();
+        break;
+    }
 }
 
-void CStateManager::load(int stateID) {
-    cout << "...Loading...";
+void CStateManager::exitState() {
+    cout << "...Exiting...\n";
 
+    int userAction;
+    cout << "Exit (1: Yes | 0: No)? ";
+    cin >> userAction;
+
+    if (userAction == 1)
+        this->setIsRunning(false);
+    else if (userAction == 0)
+        this->setState(1); // Come back to the main menu
+    else
+        cout << "Wrong input, try again !";
 }
-
-void CStateManager::exit() {
-    cout << "...Exiting...";
-}
-

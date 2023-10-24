@@ -2,6 +2,6 @@
 
 int main() {
     CStateManager csm;
-    csm.run();
+    csm.runState();
     return 0;
 }
